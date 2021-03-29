@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <name-input @onNameInputEnter="pushName"/>
-    <NameList :names="names"/>
-    <RandomName :names="names"/>
+    <name-input :names="names"/>
+    <random-name :names="names"/>
   </div>
 </template>
 
