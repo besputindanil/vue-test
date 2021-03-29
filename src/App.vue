@@ -1,28 +1,46 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <name-input @onNameInputEnter="pushName"/>
+    <NameList :names="names"/>
+    <RandomName :names="names"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NameInput from './components/NameInput.vue'
+import NameList from './components/NameList.vue'
+import RandomName from './components/RandomName.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    NameInput,
+    NameList,
+    RandomName
+  },
+  data: function() {
+    return {
+      names: []
+    }
+  },
+  methods: {
+        pushName: function(data) {
+            this.names.push(data);
+        }
+    }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  
+  font-family: Helvetica, Arial, sans-serif;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
