@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <name-input @onNameInputEnter="pushName"/>
-    <name-input :names="names"/>
+    <name-list :names="names"/>
     <random-name :names="names"/>
   </div>
 </template>
