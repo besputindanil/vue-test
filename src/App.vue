@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div id="app" class="app">
     <div class="app__wrapper">
         <name-input @onNameInputEnter="pushName"/>
@@ -12,6 +13,12 @@
       </div>
     </div>
     
+=======
+  <div id="app">
+    <name-input @onNameInputEnter="pushName"/>
+    <name-list :names="names"/>
+    <random-name :names="names"/>
+>>>>>>> 839b9d00908a62e3017d73c1302b79bc6891b06e
   </div>
 </template>
 
