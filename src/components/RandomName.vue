@@ -1,9 +1,11 @@
 <template>
-    <div>
-        <button @click="onRandomButtonClick(names)">Кто кому дарит подарки!</button>
-        <div>
-            
-        </div>
+    <div class="random-name">
+        <button class="random-name__button button" @click="onRandomButtonClick">Кто кому дарит подарки!</button>
+        <ul class="app-list random-name__list">
+            <li class="random-name__item" v-for="(name, i) in sortNames" :key="i">
+                {{ name[0] }} дарит подарок {{ name[1] }}
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -11,16 +13,27 @@
 export default {
     name: 'RandomName',
     props: {names: Array},
-    data: function() {
+    data() {
         return {
             sortNames: []
         }
     },
     methods: {
-        onRandomButtonClick: function(names) {
-            const copyNames = [...names]
-            const sortNames = copyNames.sort(() => Math.random() - 0.5);
-            console.log(sortNames);
+        onRandomButtonClick() {
+            this.sortNames = [];
+            const copyNames = [...this.names]
+            let tempArr = [];
+            for (let i = copyNames.length; i > 0; i--) {
+                let randomInd = Math.floor(Math.random() * i)
+                let randomName = copyNames.splice(randomInd, 1)[0];
+                tempArr.push(randomName);
+            }
+            tempArr = [...tempArr, tempArr[0]]
+            
+            for (let j = 0; j < tempArr.length - 1; j++) {
+                this.sortNames.push([tempArr[j], tempArr[j + 1]])
+            }
+            return this.sortNames
         }
     }
 }

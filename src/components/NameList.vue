@@ -1,27 +1,32 @@
 <template>
-    <ul class="name-list">
-        <li class="name-item" v-for="(name, index) in names" :key="index">
-            {{ name }}
-        </li>
-    </ul>
+    <div class="name">
+        <button class="name__button button" @click="onClearList">Очистить список</button>
+        <ul class="app-list name__list">
+            <li class="name__item" v-for="(name, index) in names" :key="index">
+                {{ name }}
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
 export default {
-    name: 'Namelist',
-    props: {names: Array}
+    name: 'Name',
+    props: {names: Array},
+    methods: {
+        onClearList() {
+            this.$emit("onClearList");
+        }
+    }
 }
 </script>
 
 <style scoped>
-.name-list {
+.name {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 0;
-    margin-bottom: 20px;
-    padding-left: 0;
-
-    list-style: none;
+    justify-content: space-between;
+    margin-right: 50px;
 }
 </style>

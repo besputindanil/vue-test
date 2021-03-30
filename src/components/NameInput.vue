@@ -10,13 +10,13 @@
 <script>
 export default {
     name: 'NameInput',
-    data: function() {
+    data() {
         return {
             name: ''
         }
     },
     methods: {
-        onNameInputEnter: function() {
+        onNameInputEnter() {
             this.$emit('onNameInputEnter', this.name);
             this.name = ''
         }
@@ -31,5 +31,28 @@ export default {
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+
+   
+}
+
+.name-input h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+
+    text-transform: uppercase;
+}
+
+.name-input input {
+    padding: 10px 15px;
+
+    color: #5D0F4C;
+
+    border: none;
+    outline: 1px solid #306E12;
+}
+
+.name-input input:hover,
+.name-input input:focus {
+    outline-width: 2px;
 }
 </style>
